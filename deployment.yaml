@@ -1,0 +1,27 @@
+# This line specifies the API version of the Kubernetes resource being defined. In this case, it's using the apps/v1 version.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-app-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: node-app
+  template:
+    metadata:
+      labels:
+        app: node-app
+    spec:
+      containers:
+      - name: node-app
+        image: pdheeraj99/my-node-app
+        ports:
+        - containerPort: 3000
+        resources:
+          limits:
+            memory: 200Mi
+            cpu: 100m
+          requests:
+            memory: 200Mi
+            cpu: 100m
